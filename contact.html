@@ -4,101 +4,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Контакты — Фабрика воспоминаний</title>
-    <meta name="description" content="Свяжитесь с Фабрикой воспоминаний: заявки на персональные 3D-проекты и подарочные диорамы." />
+    <meta name="description" content="Свяжитесь с Фабрикой воспоминаний и получите концепцию персонального проекта." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <div class="container nav">
+      <div class="container nav-wrap">
         <a class="brand" href="index.html">
           <img src="assets/logo.svg" alt="Логотип Фабрики воспоминаний" />
           <span class="brand-text">Фабрика воспоминаний</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="services.html">Услуги</a></li>
-          <li><a href="portfolio.html">Портфолио</a></li>
-          <li><a href="about.html">О нас</a></li>
-          <li><a class="active" href="contact.html">Контакты</a></li>
-        </ul>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="services.html">Процесс</a></li>
+            <li><a href="portfolio.html">Портфолио</a></li>
+            <li><a href="about.html">О студии</a></li>
+            <li><a class="active" href="contact.html">Контакты</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn-sm" href="https://t.me/fabrika_vospominaniy" target="_blank" rel="noopener noreferrer">Telegram</a>
       </div>
     </header>
 
     <main>
       <section class="page-hero container">
         <p class="badge">Контакты</p>
-        <h1>Давайте соберём ваш проект</h1>
-        <p>
-          Напишите в удобном формате: ответим, предложим 2–3 идеи реализации и подскажем по
-          срокам и стоимости.
-        </p>
+        <h1>Давайте обсудим вашу идею</h1>
+        <p>Самый быстрый путь — Telegram. Также можно оставить заявку ниже.</p>
       </section>
 
-      <section class="section container contact-shell">
-        <div class="contact-info-grid">
-          <article class="card contact-card">
-            <h3>Быстрая связь</h3>
-            <p><strong>Telegram:</strong> @fabrika_vospominaniy</p>
-            <p><strong>Email:</strong> hello@fabrika-memory.ru</p>
-          </article>
-          <article class="card contact-card">
-            <h3>График</h3>
-            <p>Ежедневно: 10:00 — 21:00</p>
-            <p>Онлайн-работа по всему миру</p>
-          </article>
-          <article class="card contact-card">
-            <h3>Что подготовить</h3>
-            <p>Фото места, имена, даты и 2-3 важные детали воспоминания.</p>
-          </article>
-        </div>
+      <section class="section container contact-grid-modern">
+        <article class="feature-card reveal">
+          <h3>Telegram</h3>
+          <p>@fabrika_vospominaniy</p>
+          <a class="btn btn-sm" href="https://t.me/fabrika_vospominaniy" target="_blank" rel="noopener noreferrer">Открыть чат</a>
+        </article>
+        <article class="feature-card reveal">
+          <h3>Email</h3>
+          <p>hello@fabrika-memory.ru</p>
+          <a class="btn btn-sm btn-ghost" href="mailto:hello@fabrika-memory.ru">Написать письмо</a>
+        </article>
+        <article class="feature-card reveal">
+          <h3>График</h3>
+          <p>Каждый день, 10:00 — 21:00</p>
+          <p>Работаем по всему миру</p>
+        </article>
+      </section>
 
-        <div class="contact-layout">
-          <form class="contact-form modern-form" id="contactForm">
-            <h2>Заявка</h2>
-            <label>
-              Ваше имя
-              <input type="text" name="name" required placeholder="Например, Алина" />
-            </label>
-            <label>
-              Контакт (Telegram / телефон)
-              <input type="text" name="contact" required placeholder="@username или +7..." />
-            </label>
-            <label>
-              Тип проекта
-              <select name="projectType" required>
-                <option value="">Выберите вариант</option>
-                <option>Мини-диорама</option>
-                <option>Макет пространства</option>
-                <option>Подарочный проект</option>
-                <option>Семейный/ностальгический проект</option>
-              </select>
-            </label>
-            <label>
-              Подробности
-              <textarea name="details" rows="4" required placeholder="Коротко расскажите историю, даты и что важно сохранить"></textarea>
-            </label>
-            <button class="btn" type="submit">Отправить заявку</button>
-            <p class="form-message" id="formMessage" aria-live="polite"></p>
-          </form>
+      <section class="section container contact-layout">
+        <form class="contact-form modern-form" id="contactForm">
+          <h2>Форма заявки</h2>
+          <label>
+            Имя
+            <input type="text" name="name" required placeholder="Ваше имя" />
+          </label>
+          <label>
+            Контакт
+            <input type="text" name="contact" required placeholder="@telegram или телефон" />
+          </label>
+          <label>
+            Тип проекта
+            <select name="projectType" required>
+              <option value="">Выберите</option>
+              <option>Мини-диорама</option>
+              <option>Ностальгический макет</option>
+              <option>Семейный проект</option>
+              <option>Подарочный проект</option>
+            </select>
+          </label>
+          <label>
+            Описание
+            <textarea name="details" rows="4" required placeholder="Что хотите воссоздать"></textarea>
+          </label>
+          <button class="btn" type="submit">Отправить заявку</button>
+          <p class="form-message" id="formMessage" aria-live="polite"></p>
+        </form>
 
-          <aside class="contact-aside glass-card">
-            <h3>Мини-чеклист клиента</h3>
-            <ul>
-              <li>Что именно хотим воссоздать</li>
-              <li>Для кого подарок / какой повод</li>
-              <li>Желаемый размер и дедлайн</li>
-              <li>Референсы по стилю (если есть)</li>
-            </ul>
-            <a class="btn btn-secondary" href="portfolio.html">Сначала посмотреть примеры</a>
-          </aside>
-        </div>
+        <aside class="contact-aside glass">
+          <h3>Что лучше прислать сразу</h3>
+          <ul>
+            <li>2-5 фото локации/объекта</li>
+            <li>Имена, дата, надпись на табличке</li>
+            <li>Срок, к которому нужен подарок</li>
+            <li>Бюджет или комфортный диапазон</li>
+          </ul>
+          <a class="btn btn-sm" href="https://t.me/fabrika_vospominaniy" target="_blank" rel="noopener noreferrer">Отправить материалы в Telegram</a>
+        </aside>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
         <strong>© <span data-year></span> Фабрика воспоминаний</strong>
-        <span class="footer-note">Красивые контакты для красивых проектов.</span>
+        <span class="footer-note">Всегда на связи.</span>
       </div>
     </footer>
 
