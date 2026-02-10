@@ -6,6 +6,7 @@
     <title>Портфолио — Фабрика воспоминаний</title>
     <meta name="description" content="Портфолио студии: современные карточки с местами под реальные кейсы и фото работ." />
     <link rel="stylesheet" href="styles.css" />
+    <meta name="theme-color" content="#c91419" />
   </head>
   <body>
     <header class="site-header">
@@ -23,6 +24,8 @@
             <li><a href="contact.html">Контакты</a></li>
           </ul>
         </nav>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Переключить тему" title="Переключить тему">🌓</button>
+
         <a class="btn btn-sm" href="https://t.me/fabrika_vospominaniy" target="_blank" rel="noopener noreferrer">Telegram</a>
       </div>
     </header>
@@ -34,13 +37,79 @@
         <p>Пока это демонстрационные карточки. Вы можете легко заменить фото на свои реальные работы.</p>
       </section>
 
+      <section class="section container">
+        <div class="filters" role="tablist" aria-label="Фильтры портфолио">
+          <button class="chip active" type="button" data-filter="all" role="tab" aria-selected="true">Все</button>
+          <button class="chip" type="button" data-filter="love" role="tab" aria-selected="false">Любовь</button>
+          <button class="chip" type="button" data-filter="family" role="tab" aria-selected="false">Семья</button>
+          <button class="chip" type="button" data-filter="nostalgia" role="tab" aria-selected="false">Ностальгия</button>
+          <button class="chip" type="button" data-filter="pets" role="tab" aria-selected="false">Питомцы</button>
+        </div>
+      </section>
+
       <section class="section container portfolio-grid modern-portfolio">
-        <article class="catalog-card reveal"><img src="assets/catalog/card-1.svg" alt="Кейс 1" /><div class="catalog-body"><h3>Кейс 1</h3><p>Добавьте реальное фото здесь.</p></div></article>
-        <article class="catalog-card reveal"><img src="assets/catalog/card-2.svg" alt="Кейс 2" /><div class="catalog-body"><h3>Кейс 2</h3><p>Добавьте реальное фото здесь.</p></div></article>
-        <article class="catalog-card reveal"><img src="assets/catalog/card-3.svg" alt="Кейс 3" /><div class="catalog-body"><h3>Кейс 3</h3><p>Добавьте реальное фото здесь.</p></div></article>
-        <article class="catalog-card reveal"><img src="assets/catalog/card-4.svg" alt="Кейс 4" /><div class="catalog-body"><h3>Кейс 4</h3><p>Добавьте реальное фото здесь.</p></div></article>
-        <article class="catalog-card reveal"><img src="assets/catalog/card-5.svg" alt="Кейс 5" /><div class="catalog-body"><h3>Кейс 5</h3><p>Добавьте реальное фото здесь.</p></div></article>
-        <article class="catalog-card reveal"><img src="assets/catalog/card-6.svg" alt="Кейс 6" /><div class="catalog-body"><h3>Кейс 6</h3><p>Добавьте реальное фото здесь.</p></div></article>
+        
+        <article class="catalog-card reveal portfolio-item" data-modal data-title="Кейс 1 — Первая встреча" data-tag="love" data-src="assets/catalog/card-1.svg" data-desc="Короткое описание кейса: сюжет, детали, материалы и что можно персонализировать.">
+          <button class="card-hit" type="button" aria-label="Открыть кейс: Кейс 1 — Первая встреча">
+            <span class="card-hit-label">Смотреть</span>
+          </button>
+          <img src="assets/catalog/card-1.svg" alt="Кейс 1 — Первая встреча" loading="lazy" />
+          <div class="catalog-body">
+            <h3>Кейс 1 — Первая встреча</h3>
+            <p>Нажмите, чтобы открыть карточку кейса.</p>
+          </div>
+        </article>
+        <article class="catalog-card reveal portfolio-item" data-modal data-title="Кейс 2 — Тот самый столик" data-tag="love" data-src="assets/catalog/card-2.svg" data-desc="Короткое описание кейса: сюжет, детали, материалы и что можно персонализировать.">
+          <button class="card-hit" type="button" aria-label="Открыть кейс: Кейс 2 — Тот самый столик">
+            <span class="card-hit-label">Смотреть</span>
+          </button>
+          <img src="assets/catalog/card-2.svg" alt="Кейс 2 — Тот самый столик" loading="lazy" />
+          <div class="catalog-body">
+            <h3>Кейс 2 — Тот самый столик</h3>
+            <p>Нажмите, чтобы открыть карточку кейса.</p>
+          </div>
+        </article>
+        <article class="catalog-card reveal portfolio-item" data-modal data-title="Кейс 3 — Двор детства" data-tag="nostalgia" data-src="assets/catalog/card-3.svg" data-desc="Короткое описание кейса: сюжет, детали, материалы и что можно персонализировать.">
+          <button class="card-hit" type="button" aria-label="Открыть кейс: Кейс 3 — Двор детства">
+            <span class="card-hit-label">Смотреть</span>
+          </button>
+          <img src="assets/catalog/card-3.svg" alt="Кейс 3 — Двор детства" loading="lazy" />
+          <div class="catalog-body">
+            <h3>Кейс 3 — Двор детства</h3>
+            <p>Нажмите, чтобы открыть карточку кейса.</p>
+          </div>
+        </article>
+        <article class="catalog-card reveal portfolio-item" data-modal data-title="Кейс 4 — Предложение" data-tag="love" data-src="assets/catalog/card-4.svg" data-desc="Короткое описание кейса: сюжет, детали, материалы и что можно персонализировать.">
+          <button class="card-hit" type="button" aria-label="Открыть кейс: Кейс 4 — Предложение">
+            <span class="card-hit-label">Смотреть</span>
+          </button>
+          <img src="assets/catalog/card-4.svg" alt="Кейс 4 — Предложение" loading="lazy" />
+          <div class="catalog-body">
+            <h3>Кейс 4 — Предложение</h3>
+            <p>Нажмите, чтобы открыть карточку кейса.</p>
+          </div>
+        </article>
+        <article class="catalog-card reveal portfolio-item" data-modal data-title="Кейс 5 — Наш первый дом" data-tag="family" data-src="assets/catalog/card-5.svg" data-desc="Короткое описание кейса: сюжет, детали, материалы и что можно персонализировать.">
+          <button class="card-hit" type="button" aria-label="Открыть кейс: Кейс 5 — Наш первый дом">
+            <span class="card-hit-label">Смотреть</span>
+          </button>
+          <img src="assets/catalog/card-5.svg" alt="Кейс 5 — Наш первый дом" loading="lazy" />
+          <div class="catalog-body">
+            <h3>Кейс 5 — Наш первый дом</h3>
+            <p>Нажмите, чтобы открыть карточку кейса.</p>
+          </div>
+        </article>
+        <article class="catalog-card reveal portfolio-item" data-modal data-title="Кейс 6 — Питомец" data-tag="pets" data-src="assets/catalog/card-6.svg" data-desc="Короткое описание кейса: сюжет, детали, материалы и что можно персонализировать.">
+          <button class="card-hit" type="button" aria-label="Открыть кейс: Кейс 6 — Питомец">
+            <span class="card-hit-label">Смотреть</span>
+          </button>
+          <img src="assets/catalog/card-6.svg" alt="Кейс 6 — Питомец" loading="lazy" />
+          <div class="catalog-body">
+            <h3>Кейс 6 — Питомец</h3>
+            <p>Нажмите, чтобы открыть карточку кейса.</p>
+          </div>
+        </article>
+      
       </section>
 
       <section class="section container">
@@ -53,6 +122,25 @@
           </p>
         </div>
       </section>
+
+      <dialog class="modal" id="portfolioModal" aria-label="Просмотр кейса">
+        <form method="dialog" class="modal-inner">
+          <button class="modal-close" aria-label="Закрыть" value="close" type="submit">✕</button>
+          <div class="modal-media">
+            <img id="modalImage" src="" alt="" />
+          </div>
+          <div class="modal-content">
+            <p class="badge">Кейс</p>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc" class="modal-desc"></p>
+            <div class="modal-actions">
+              <a class="btn" href="https://t.me/fabrika_vospominaniy" target="_blank" rel="noopener noreferrer">Хочу такой проект</a>
+              <button class="btn btn-ghost" value="close" type="submit">Закрыть</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
     </main>
 
     <footer class="site-footer">
