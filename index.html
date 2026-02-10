@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Фабрика воспоминаний — 3D-модели ваших моментов</title>
+    <meta
+      name="description"
+      content="Создаём 3D-модели важных мест и событий: квартиры, дворы, свадьбы, первый поцелуй и многое другое."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="container nav">
+        <div class="logo">Фабрика воспоминаний</div>
+        <a class="btn btn-outline" href="#contact">Связаться</a>
+      </nav>
+
+      <div class="container hero-content">
+        <p class="badge">3D-студия персональных историй</p>
+        <h1>Превращаем ваши воспоминания в реалистичные 3D-миры</h1>
+        <p class="subtitle">
+          Воссоздаём квартиры, дворы, свадьбы, места знакомства и другие важные
+          моменты — чтобы их можно было снова пережить.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#services">Посмотреть услуги</a>
+          <a class="btn btn-secondary" href="#portfolio">Примеры работ</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="services" class="section container">
+        <h2>Что мы делаем</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Интерьеры и квартиры</h3>
+            <p>Точная 3D-модель вашей квартиры, комнаты или дома по фото и плану.</p>
+          </article>
+          <article class="card">
+            <h3>Дворы и улицы</h3>
+            <p>Воссоздаём район детства, двор или любимое место прогулок.</p>
+          </article>
+          <article class="card">
+            <h3>События</h3>
+            <p>Свадьба, первое свидание, первый поцелуй — превращаем момент в цифровую память.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section container">
+        <h2>Как проходит работа</h2>
+        <ol class="steps">
+          <li>Обсуждаем идею и собираем материалы (фото, видео, планы, детали).</li>
+          <li>Создаём черновую 3D-сцену и показываем вам превью.</li>
+          <li>Дорабатываем детали, свет, атмосферу и передаём финальный результат.</li>
+        </ol>
+      </section>
+
+      <section id="contact" class="section container contact">
+        <h2>Оставьте заявку</h2>
+        <p>Напишите, какое воспоминание хотите сохранить в 3D.</p>
+        <form class="contact-form" id="contactForm">
+          <label>
+            Ваше имя
+            <input type="text" name="name" placeholder="Например, Алина" required />
+          </label>
+          <label>
+            Контакт (Telegram / телефон)
+            <input type="text" name="contact" placeholder="@username или +7..." required />
+          </label>
+          <label>
+            Описание проекта
+            <textarea name="details" rows="4" placeholder="Опишите идею" required></textarea>
+          </label>
+          <button class="btn" type="submit">Отправить заявку</button>
+          <p class="form-message" id="formMessage" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        © <span id="year"></span> Фабрика воспоминаний
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
