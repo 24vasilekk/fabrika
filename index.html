@@ -3,87 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Фабрика воспоминаний — 3D-модели ваших моментов</title>
+    <title>Фабрика воспоминаний — эстетичные 3D-диорамы и макеты</title>
     <meta
       name="description"
-      content="Создаём 3D-модели важных мест и событий: квартиры, дворы, свадьбы, первый поцелуй и многое другое."
+      content="Современная студия Фабрика воспоминаний: создаём эстетичные персональные 3D-диорамы, макеты и подарки в красно-белом стиле."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="hero">
-      <nav class="container nav">
-        <div class="logo">Фабрика воспоминаний</div>
-        <a class="btn btn-outline" href="#contact">Связаться</a>
-      </nav>
-
-      <div class="container hero-content">
-        <p class="badge">3D-студия персональных историй</p>
-        <h1>Превращаем ваши воспоминания в реалистичные 3D-миры</h1>
-        <p class="subtitle">
-          Воссоздаём квартиры, дворы, свадьбы, места знакомства и другие важные
-          моменты — чтобы их можно было снова пережить.
-        </p>
-        <div class="hero-actions">
-          <a class="btn" href="#services">Посмотреть услуги</a>
-          <a class="btn btn-secondary" href="#portfolio">Примеры работ</a>
-        </div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.svg" alt="Логотип Фабрики воспоминаний" />
+          <span class="brand-text">Фабрика воспоминаний</span>
+        </a>
+        <ul class="nav-links">
+          <li><a class="active" href="index.html">Главная</a></li>
+          <li><a href="services.html">Услуги</a></li>
+          <li><a href="portfolio.html">Портфолио</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="contact.html">Контакты</a></li>
+        </ul>
       </div>
     </header>
 
     <main>
-      <section id="services" class="section container">
-        <h2>Что мы делаем</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>Интерьеры и квартиры</h3>
-            <p>Точная 3D-модель вашей квартиры, комнаты или дома по фото и плану.</p>
-          </article>
-          <article class="card">
-            <h3>Дворы и улицы</h3>
-            <p>Воссоздаём район детства, двор или любимое место прогулок.</p>
-          </article>
-          <article class="card">
-            <h3>События</h3>
-            <p>Свадьба, первое свидание, первый поцелуй — превращаем момент в цифровую память.</p>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="badge">Эмоции в 3D • Премиальный red/white стиль</p>
+            <h1>Делаем память о важных моментах красивым арт-объектом</h1>
+            <p class="subtitle">
+              Создаём эстетичные мини-диорамы, макеты и памятные мини-сцены: от «нашей
+              первой встречи» до «двора детства», семейных традиций и личных историй.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="contact.html">Обсудить проект</a>
+              <a class="btn btn-secondary" href="portfolio.html">Посмотреть примеры</a>
+            </div>
+          </div>
+
+          <article class="hero-card glass-card">
+            <img src="assets/logo.svg" alt="Фирменный логотип Фабрики воспоминаний" />
+            <p>
+              Современная эстетика + ностальгический смысл. Каждый проект проектируется под
+              конкретную историю человека.
+            </p>
           </article>
         </div>
       </section>
 
-      <section id="portfolio" class="section container">
-        <h2>Как проходит работа</h2>
-        <ol class="steps">
-          <li>Обсуждаем идею и собираем материалы (фото, видео, планы, детали).</li>
-          <li>Создаём черновую 3D-сцену и показываем вам превью.</li>
-          <li>Дорабатываем детали, свет, атмосферу и передаём финальный результат.</li>
-        </ol>
+      <section class="section container section-intro">
+        <h2>Что мы делаем</h2>
+        <p>
+          Ниже — наш каталог идей. Любую позицию можно адаптировать под ваш сюжет, бюджет и
+          формат подарка.
+        </p>
       </section>
 
-      <section id="contact" class="section container contact">
-        <h2>Оставьте заявку</h2>
-        <p>Напишите, какое воспоминание хотите сохранить в 3D.</p>
-        <form class="contact-form" id="contactForm">
-          <label>
-            Ваше имя
-            <input type="text" name="name" placeholder="Например, Алина" required />
-          </label>
-          <label>
-            Контакт (Telegram / телефон)
-            <input type="text" name="contact" placeholder="@username или +7..." required />
-          </label>
-          <label>
-            Описание проекта
-            <textarea name="details" rows="4" placeholder="Опишите идею" required></textarea>
-          </label>
-          <button class="btn" type="submit">Отправить заявку</button>
-          <p class="form-message" id="formMessage" aria-live="polite"></p>
-        </form>
+      <section class="section section-tight container">
+        <h2>Каталог идей</h2>
+        <div class="catalog-grid">
+          <article class="catalog-item"><strong>1.</strong> «Наша первая встреча» (мини-диорама)</article>
+          <article class="catalog-item"><strong>2.</strong> «Тот самый столик» (капсула свидания)</article>
+          <article class="catalog-item"><strong>3.</strong> «Место первого поцелуя» (3D-точка на карте)</article>
+          <article class="catalog-item"><strong>4.</strong> Диорама «Предложение» с местом под кольцо</article>
+          <article class="catalog-item"><strong>5.</strong> «Наш первый дом» (макет квартиры в разрезе)</article>
+          <article class="catalog-item"><strong>7.</strong> «Подъезд детства» (мини-лестничная клетка)</article>
+          <article class="catalog-item"><strong>8.</strong> «Двор, где мы росли»</article>
+          <article class="catalog-item"><strong>9.</strong> «Бабушкин дом» (крыльцо/печка/колодец)</article>
+          <article class="catalog-item"><strong>10.</strong> «Кухня 90-х/2000-х» (ностальгическая мини-комната)</article>
+          <article class="catalog-item"><strong>11.</strong> «Комната детства в разрезе»</article>
+          <article class="catalog-item"><strong>12.</strong> «Школьная парта с выцарапанным именем»</article>
+          <article class="catalog-item"><strong>13.</strong> «Школьный коридор» (фрагмент)</article>
+          <article class="catalog-item"><strong>14.</strong> «Дневник/тетрадь» как шкатулка</article>
+          <article class="catalog-item"><strong>15.</strong> «Игрушка детства по фото»</article>
+          <article class="catalog-item"><strong>16.</strong> «Тамагочи/плеер/кассета» (серия эпохи)</article>
+          <article class="catalog-item"><strong>17.</strong> «Пульт от телевизора и диван» (мини-сцена)</article>
+          <article class="catalog-item"><strong>19.</strong> «Письмо из прошлого» (капсула времени)</article>
+          <article class="catalog-item"><strong>20.</strong> «Первый автомобиль/мотоцикл» (мини-модель)</article>
+          <article class="catalog-item"><strong>21.</strong> «Гаражная романтика»</article>
+          <article class="catalog-item"><strong>22.</strong> «Родительский ремесленный след»</article>
+          <article class="catalog-item"><strong>23.</strong> «Швейная машинка бабушки»</article>
+          <article class="catalog-item"><strong>24.</strong> «Сервиз/кружка из детства»</article>
+          <article class="catalog-item"><strong>25.</strong> «Питомец на ладони» (фигурка + табличка)</article>
+          <article class="catalog-item"><strong>26.</strong> «Роддом/первая метрика» (объёмная метрика)</article>
+          <article class="catalog-item"><strong>27.</strong> «Семейное древо в 3D»</article>
+          <article class="catalog-item"><strong>28.</strong> «Наш семейный стол» (диорама традиции)</article>
+          <article class="catalog-item"><strong>29.</strong> «Любимое место отдыха» (дача/рыбалка/лес)</article>
+          <article class="catalog-item"><strong>30.</strong> «Мы всей семьёй» в стиле Pixar/мульт</article>
+        </div>
+      </section>
+
+      <section class="section container">
+        <div class="highlight">
+          <h2>Сделаем ваш персональный проект за 3 шага</h2>
+          <p>
+            Вы пишете историю → мы предлагаем концепт и стиль → вместе собираем финальный
+            объект, который хочется хранить годами.
+          </p>
+          <div class="cta-actions">
+            <a class="btn btn-secondary" href="services.html">Узнать процесс</a>
+            <a class="btn" href="contact.html">Оставить заявку</a>
+          </div>
+        </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        © <span id="year"></span> Фабрика воспоминаний
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <strong>© <span data-year></span> Фабрика воспоминаний</strong>
+        <span class="footer-note">Эстетичные объекты с памятью внутри.</span>
       </div>
     </footer>
 

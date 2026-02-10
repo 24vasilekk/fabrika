@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты — Фабрика воспоминаний</title>
+    <meta name="description" content="Свяжитесь с Фабрикой воспоминаний: заявки на персональные 3D-проекты и подарочные диорамы." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.svg" alt="Логотип Фабрики воспоминаний" />
+          <span class="brand-text">Фабрика воспоминаний</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="services.html">Услуги</a></li>
+          <li><a href="portfolio.html">Портфолио</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a class="active" href="contact.html">Контакты</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero container">
+        <p class="badge">Контакты</p>
+        <h1>Давайте соберём ваш проект</h1>
+        <p>
+          Напишите в удобном формате: ответим, предложим 2–3 идеи реализации и подскажем по
+          срокам и стоимости.
+        </p>
+      </section>
+
+      <section class="section container contact-shell">
+        <div class="contact-info-grid">
+          <article class="card contact-card">
+            <h3>Быстрая связь</h3>
+            <p><strong>Telegram:</strong> @fabrika_vospominaniy</p>
+            <p><strong>Email:</strong> hello@fabrika-memory.ru</p>
+          </article>
+          <article class="card contact-card">
+            <h3>График</h3>
+            <p>Ежедневно: 10:00 — 21:00</p>
+            <p>Онлайн-работа по всему миру</p>
+          </article>
+          <article class="card contact-card">
+            <h3>Что подготовить</h3>
+            <p>Фото места, имена, даты и 2-3 важные детали воспоминания.</p>
+          </article>
+        </div>
+
+        <div class="contact-layout">
+          <form class="contact-form modern-form" id="contactForm">
+            <h2>Заявка</h2>
+            <label>
+              Ваше имя
+              <input type="text" name="name" required placeholder="Например, Алина" />
+            </label>
+            <label>
+              Контакт (Telegram / телефон)
+              <input type="text" name="contact" required placeholder="@username или +7..." />
+            </label>
+            <label>
+              Тип проекта
+              <select name="projectType" required>
+                <option value="">Выберите вариант</option>
+                <option>Мини-диорама</option>
+                <option>Макет пространства</option>
+                <option>Подарочный проект</option>
+                <option>Семейный/ностальгический проект</option>
+              </select>
+            </label>
+            <label>
+              Подробности
+              <textarea name="details" rows="4" required placeholder="Коротко расскажите историю, даты и что важно сохранить"></textarea>
+            </label>
+            <button class="btn" type="submit">Отправить заявку</button>
+            <p class="form-message" id="formMessage" aria-live="polite"></p>
+          </form>
+
+          <aside class="contact-aside glass-card">
+            <h3>Мини-чеклист клиента</h3>
+            <ul>
+              <li>Что именно хотим воссоздать</li>
+              <li>Для кого подарок / какой повод</li>
+              <li>Желаемый размер и дедлайн</li>
+              <li>Референсы по стилю (если есть)</li>
+            </ul>
+            <a class="btn btn-secondary" href="portfolio.html">Сначала посмотреть примеры</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <strong>© <span data-year></span> Фабрика воспоминаний</strong>
+        <span class="footer-note">Красивые контакты для красивых проектов.</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Портфолио — Фабрика воспоминаний</title>
+    <meta name="description" content="Портфолио Фабрики воспоминаний — примеры 3D-проектов и места для ваших будущих фото кейсов." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.svg" alt="Логотип Фабрики воспоминаний" />
+          <span class="brand-text">Фабрика воспоминаний</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="services.html">Услуги</a></li>
+          <li><a class="active" href="portfolio.html">Портфолио</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="contact.html">Контакты</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero container">
+        <p class="badge">Портфолио</p>
+        <h1>Примеры наших работ</h1>
+        <p>
+          Ниже аккуратные карточки-заготовки: вы сможете заменить изображения на свои рендеры
+          или фото готовых работ.
+        </p>
+      </section>
+
+      <section class="section container portfolio-grid modern-portfolio">
+        <article class="case photo-case">
+          <div class="photo-placeholder">Добавьте фото кейса №1</div>
+          <h3>Наша первая встреча</h3>
+          <p>Сцена остановки/кафе/университета с личными деталями.</p>
+        </article>
+        <article class="case photo-case">
+          <div class="photo-placeholder">Добавьте фото кейса №2</div>
+          <h3>Тот самый столик</h3>
+          <p>Капсула свидания: мини-столик, стулья, меню, дата.</p>
+        </article>
+        <article class="case photo-case">
+          <div class="photo-placeholder">Добавьте фото кейса №3</div>
+          <h3>Наш первый дом</h3>
+          <p>Разрез квартиры с узнаваемыми «якорями» памяти.</p>
+        </article>
+        <article class="case photo-case">
+          <div class="photo-placeholder">Добавьте фото кейса №4</div>
+          <h3>Двор, где мы росли</h3>
+          <p>Ностальгическая сцена двора с атмосферой детства.</p>
+        </article>
+        <article class="case photo-case">
+          <div class="photo-placeholder">Добавьте фото кейса №5</div>
+          <h3>Школьная парта</h3>
+          <p>Мини-парта с надписью и датой выпуска.</p>
+        </article>
+        <article class="case photo-case">
+          <div class="photo-placeholder">Добавьте фото кейса №6</div>
+          <h3>Питомец на ладони</h3>
+          <p>Персональная фигурка питомца в любимой позе.</p>
+        </article>
+      </section>
+
+      <section class="section container">
+        <div class="hint-box">
+          <h2>Как быстро заменить заглушки на реальные фото</h2>
+          <p>
+            Положите изображения в папку <code>assets/portfolio/</code> и поменяйте блок
+            <code>&lt;div class="photo-placeholder"&gt;...&lt;/div&gt;</code> на
+            <code>&lt;img src="assets/portfolio/имя-файла.jpg" alt="..." /&gt;</code>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <strong>© <span data-year></span> Фабрика воспоминаний</strong>
+        <span class="footer-note">Здесь скоро появятся ваши лучшие кейсы.</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
