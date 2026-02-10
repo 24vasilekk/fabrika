@@ -19,8 +19,50 @@ python3 -m http.server 8000
 
 3. Откройте в браузере `http://localhost:8000`.
 
+## Как загрузить проект на GitHub (первый раз)
+
+> Делается один раз для нового проекта.
+
+1. Создай пустой репозиторий на GitHub (без `README`, без `.gitignore`).
+2. В VS Code открой терминал в папке проекта и выполни:
+
+```bash
+git init
+git add .
+git commit -m "first commit: сайт Фабрика воспоминаний"
+```
+
+3. Привяжи GitHub-репозиторий (замени URL на свой):
+
+```bash
+git remote add origin https://github.com/24vasilekk/fabrika.git
+git branch -M main
+git push -u origin main
+```
+
+После этого сайт появится на GitHub.
+
+## Как отправлять следующие изменения
+
+Когда что-то поменяешь в файлах:
+
+```bash
+git add .
+git commit -m "описание изменений"
+git push
+```
+
+## Альтернатива: через интерфейс VS Code
+
+1. Слева открой вкладку **Source Control**.
+2. Нажми **Initialize Repository** (если Git ещё не включен).
+3. Нажми **+** рядом с файлами (Stage).
+4. Введи сообщение коммита и нажми **Commit**.
+5. Нажми **Publish Branch** / **Sync Changes** и авторизуйся в GitHub.
+
 ## Что делать дальше
 
 - Подключить настоящий приём заявок (Telegram Bot API, email, CRM).
 - Добавить реальные кейсы/портфолио и отзывы.
 - Перенести в React/Next.js, когда появится необходимость в более сложном функционале.
+- На следующем этапе задеплоить сайт на Railway.
