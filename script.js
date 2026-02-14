@@ -90,17 +90,28 @@ if (form) {
       details || '—',
     ];
 
-    const text = encodeURIComponent(lines.join('\n'));
-    const tgUrl = `https://t.me/managerfabricav?text=${text}`;
+    // Telegram deep links support draft text.
+    // Prefer tg://resolve to reduce the chance of the draft showing URL-encoded in some clients.
+    // Official docs: tg://resolve?domain=<username>&text=<draft_text>
+    let draftText = lines.join('\n');
+    // Telegram recommends prepending a whitespace if the draft starts with '@' (inline query).
+    if (draftText.startsWith('@')) draftText = ` ${draftText}`;
 
-    // Try to open Telegram with the pre-filled message.
-    const popup = window.open(tgUrl, '_blank', 'noopener,noreferrer');
+    const deepParams = new URLSearchParams({ domain: 'managerfabricav', text: draftText });
+    const tgDeepLink = `tg://resolve?${deepParams.toString()}`;
+
+    const webParams = new URLSearchParams({ text: draftText });
+    const tgWebLink = `https://t.me/managerfabricav?${webParams.toString()}`;
+
+    // Try to open Telegram app (deep link). If blocked, fall back to web link.
+    const popup = window.open(tgDeepLink, '_blank');
+    if (!popup) window.open(tgWebLink, '_blank', 'noopener,noreferrer');
 
     if (message) {
       if (popup) {
         message.textContent = 'Открыли Telegram с вашей заявкой — нажмите «Отправить» в чате менеджера.';
       } else {
-        message.innerHTML = `Браузер заблокировал открытие Telegram. Откройте вручную: <a href="${tgUrl}" target="_blank" rel="noopener noreferrer">написать менеджеру</a>`;
+        message.innerHTML = `Откройте Telegram и отправьте заявку менеджеру: <a href="${tgWebLink}" target="_blank" rel="noopener noreferrer">написать менеджеру</a>`;
       }
     }
 
