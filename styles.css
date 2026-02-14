@@ -92,6 +92,58 @@ body {
   padding: 4.2rem 0 2.5rem;
 }
 
+/* Mobile header: keep nav always visible, hide brand while scrolling */
+@media (max-width: 640px) {
+  .nav-wrap {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: auto;
+    padding: 0.55rem 0;
+    gap: 0.55rem;
+  }
+
+  .brand {
+    flex: 1 1 100%;
+    justify-content: center;
+    padding: 0.25rem 0 0.55rem;
+    max-height: 86px;
+    opacity: 1;
+    transform: translateY(0);
+    overflow: hidden;
+    transition: max-height 0.22s ease, opacity 0.22s ease, transform 0.22s ease, padding 0.22s ease;
+    will-change: max-height, opacity, transform;
+  }
+
+  .site-header.is-compact .brand {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    padding: 0;
+  }
+
+  nav {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .nav-links {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.75rem;
+    padding-bottom: 0.2rem;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Reduce the gap between the header and the hero content on phones */
+  .hero {
+    padding: 2.4rem 0 2.1rem;
+  }
+}
+
 .hero-layout {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;

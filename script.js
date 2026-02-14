@@ -5,6 +5,27 @@ yearElements.forEach((item) => {
 });
 
 /**
+ * Mobile header behaviour:
+ * - On phones the brand (logo + "Фабрика воспоминаний") is visible only at the very top.
+ * - While scrolling, the brand collapses, but the navigation links + Telegram stay sticky.
+ */
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  const mq = window.matchMedia('(max-width: 640px)');
+  const updateHeader = () => {
+    if (!mq.matches) {
+      siteHeader.classList.remove('is-compact');
+      return;
+    }
+    siteHeader.classList.toggle('is-compact', window.scrollY > 4);
+  };
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('resize', updateHeader);
+  updateHeader();
+}
+
+/**
  * HERO rotating text (static layout, no page "jump")
  */
 const rotatingText = document.querySelector('[data-rotate-text]');
