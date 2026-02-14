@@ -420,3 +420,27 @@ select:focus {
     justify-content: flex-start;
   }
 }
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(20, 20, 20, 0.92);
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 650;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

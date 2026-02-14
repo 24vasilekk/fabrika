@@ -46,6 +46,20 @@ if (form) {
   const managerUsername = 'managerfabricav';
   const managerUrl = `https://t.me/${managerUsername}`;
 
+  const showToast = (text) => {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'toast';
+      toast.className = 'toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = text;
+    toast.classList.add('show');
+    window.clearTimeout(showToast._t);
+    showToast._t = window.setTimeout(() => toast.classList.remove('show'), 2400);
+  };
+
   const copyToClipboard = async (text) => {
     // Primary: Clipboard API
     if (navigator.clipboard && window.isSecureContext) {
@@ -98,6 +112,8 @@ ${details}`.trim();
     } catch (e) {
       copied = false;
     }
+
+    if (copied) showToast('Текст скопирован в буфер обмена ✅');
 
     // Open Telegram chat (new tab)
     window.open(managerUrl, '_blank', 'noopener,noreferrer');
