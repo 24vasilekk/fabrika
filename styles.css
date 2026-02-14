@@ -385,3 +385,38 @@ select:focus {
     justify-content: center;
   }
 }
+
+
+.footer-right {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: end;
+}
+
+.footer-links {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 650;
+  border-bottom: 1px solid transparent;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+@media (max-width: 640px) {
+  .footer-right {
+    justify-items: start;
+  }
+  .footer-links {
+    justify-content: flex-start;
+  }
+}
