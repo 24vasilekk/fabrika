@@ -122,6 +122,8 @@ h1 {
 
 .accent-text {
   color: var(--primary);
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .subtitle,
