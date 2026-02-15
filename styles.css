@@ -315,6 +315,21 @@ textarea{min-height:120px; resize:vertical}
   display:block;
 }
 
+/* Каталог: 3 карточки в ряд на десктопе, 2 на телефоне */
+.catalog-cards{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+}
+
+@media (max-width: 520px){
+  .catalog-cards{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:12px;
+  }
+}
+
+
 /* Mobile */
 @media (max-width: 900px){
   .hero-grid{grid-template-columns:1fr; gap:16px}
