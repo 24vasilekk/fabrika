@@ -299,7 +299,7 @@ textarea{min-height:120px; resize:vertical}
 .hero .btn{border-color:rgba(15,15,16,.18); color:var(--text)}
 .hero .btn:hover{border-color:rgba(15,15,16,.30)}
 .hero .btn.btn-ghost{border-color:rgba(15,15,16,.12)}
-.accent-text{display:inline-block; white-space:nowrap}
+.accent-text{display:inline-block; white-space:nowrap; color:var(--accent);}
 
 .hero-photo-wrap{
   width:100%;
@@ -458,4 +458,10 @@ textarea{min-height:120px; resize:vertical}
 @media (max-width: 640px){
   .catalog-topics{flex-direction:column; gap:10px;}
   .catalog-topics__label{padding-top:0;}
+}
+
+
+@media (max-width: 520px){
+  .nav-links{gap:14px}
+  .nav-links a{font-size:11px; letter-spacing:.14em}
 }

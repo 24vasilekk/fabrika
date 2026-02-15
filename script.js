@@ -75,12 +75,15 @@ const header = document.querySelector('.site-header');
 const updateHeader = () => {
   if (!header) return;
   const isMobile = window.matchMedia('(max-width: 520px)').matches;
-  if (!isMobile) {
-    header.classList.remove('brand-collapsed');
+
+  // На мобильных сразу показываем компактную шапку,
+  // чтобы элементы не налезали друг на друга при первом открытии.
+  if (isMobile) {
+    header.classList.add('brand-collapsed');
     return;
   }
-  if (window.scrollY > 6) header.classList.add('brand-collapsed');
-  else header.classList.remove('brand-collapsed');
+
+  header.classList.remove('brand-collapsed');
 };
 window.addEventListener('scroll', updateHeader, { passive: true });
 window.addEventListener('resize', updateHeader);
