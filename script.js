@@ -1,103 +1,145 @@
-const yearElements = document.querySelectorAll('[data-year]');
-const currentYear = new Date().getFullYear();
-yearElements.forEach((item) => {
-  item.textContent = currentYear;
-});
+// Year in footer
+document.querySelectorAll('[data-year]').forEach((el) => (el.textContent = new Date().getFullYear()));
 
-/**
- * Mobile header behaviour:
- * - On phones the brand (logo + "Фабрика воспоминаний") is visible only at the very top.
- * - While scrolling, the brand collapses, but the navigation links + Telegram stay sticky.
- */
-const siteHeader = document.querySelector('.site-header');
-if (siteHeader) {
-  const mq = window.matchMedia('(max-width: 640px)');
-  const updateHeader = () => {
-    if (!mq.matches) {
-      siteHeader.classList.remove('is-compact');
-      return;
-    }
-    siteHeader.classList.toggle('is-compact', window.scrollY > 4);
-  };
-
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  window.addEventListener('resize', updateHeader);
-  updateHeader();
-}
-
-/**
- * HERO rotating text (static layout, no page "jump")
- */
+// Rotating hero text + lock width to avoid layout shift
 const rotatingText = document.querySelector('[data-rotate-text]');
 if (rotatingText) {
   const words = ['первую встречу', 'двор детства', 'первый поцелуй', 'семейный вечер'];
-  let index = 0;
+  let idx = 0;
 
-  // Reserve width for the longest phrase to prevent layout shift.
-  const original = rotatingText.textContent;
-  let maxWidth = 0;
-  rotatingText.style.display = 'inline-block';
-  rotatingText.style.whiteSpace = 'nowrap';
+  const lockWidth = () => {
+    const probe = document.createElement('span');
+    probe.style.position = 'absolute';
+    probe.style.visibility = 'hidden';
+    probe.style.whiteSpace = 'nowrap';
+    probe.style.font = getComputedStyle(rotatingText).font;
+    document.body.appendChild(probe);
 
-  words.forEach((w) => {
-    rotatingText.textContent = w;
-    const wpx = rotatingText.offsetWidth;
-    if (wpx > maxWidth) maxWidth = wpx;
-  });
+    let max = 0;
+    words.forEach((w) => {
+      probe.textContent = w;
+      max = Math.max(max, probe.getBoundingClientRect().width);
+    });
 
-  rotatingText.textContent = original;
-  if (maxWidth > 0) {
-    rotatingText.style.width = `${maxWidth}px`;
-  }
+    document.body.removeChild(probe);
+    rotatingText.style.display = 'inline-block';
+    rotatingText.style.minWidth = `${Math.ceil(max)}px`;
+  };
+
+  // Lock on load and on resize (fonts can load later)
+  window.addEventListener('load', lockWidth);
+  window.addEventListener('resize', lockWidth);
+  lockWidth();
 
   setInterval(() => {
-    index = (index + 1) % words.length;
-    rotatingText.textContent = words[index];
+    idx = (idx + 1) % words.length;
+    rotatingText.textContent = words[idx];
   }, 2200);
 }
 
-/**
- * Contact form -> Telegram manager
- * We copy the exact text to clipboard (reliable, no % encoding),
- * then open the manager chat. User just pastes and sends.
- */
+// Simple tilt (kept)
+const tiltCard = document.querySelector('[data-tilt]');
+if (tiltCard) {
+  tiltCard.addEventListener('mousemove', (event) => {
+    const rect = tiltCard.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width;
+    const py = (event.clientY - rect.top) / rect.height;
+    const rotateY = (px - 0.5) * 8;
+    const rotateX = (0.5 - py) * 6;
+    tiltCard.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  tiltCard.addEventListener('mouseleave', () => {
+    tiltCard.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+  });
+}
+
+// Reveal animation
+const reveals = document.querySelectorAll('.reveal');
+if (reveals.length) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
+  reveals.forEach((item) => observer.observe(item));
+}
+
+// Mobile header: hide brand while scrolling (menu stays)
+const header = document.querySelector('.site-header');
+const updateHeader = () => {
+  if (!header) return;
+  const isMobile = window.matchMedia('(max-width: 520px)').matches;
+  if (!isMobile) {
+    header.classList.remove('brand-collapsed');
+    return;
+  }
+  if (window.scrollY > 6) header.classList.add('brand-collapsed');
+  else header.classList.remove('brand-collapsed');
+};
+window.addEventListener('scroll', updateHeader, { passive: true });
+window.addEventListener('resize', updateHeader);
+updateHeader();
+
+// Toast helper
+function showToast(text) {
+  let toast = document.querySelector('.toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+  }
+  toast.textContent = text;
+  toast.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => toast.classList.remove('show'), 2400);
+}
+
+// Contact form: copy message + open manager Telegram
 const form = document.getElementById('contactForm');
 if (form) {
-  const messageEl = document.getElementById('formMessage');
-  const managerUsername = 'managerfabricav';
-  const managerUrl = `https://t.me/${managerUsername}`;
+  const message = document.getElementById('formMessage');
 
-  const showToast = (text) => {
-    let toast = document.getElementById('toast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'toast';
-      toast.className = 'toast';
-      document.body.appendChild(toast);
-    }
-    toast.textContent = text;
-    toast.classList.add('show');
-    window.clearTimeout(showToast._t);
-    showToast._t = window.setTimeout(() => toast.classList.remove('show'), 2400);
+  const buildText = (data) => {
+    const name = (data.get('name') || '').toString().trim();
+    const contact = (data.get('contact') || '').toString().trim();
+    const projectType = (data.get('projectType') || '').toString().trim();
+    const details = (data.get('details') || '').toString().trim();
+
+    // Exactly like in form (labels + line breaks)
+    return [
+      '🧩 Заявка с сайта «Фабрика воспоминаний»',
+      '',
+      `Имя: ${name}`,
+      `Контакт: ${contact}`,
+      `Тип проекта: ${projectType}`,
+      '',
+      'Описание:',
+      details,
+    ].join('\n');
   };
 
   const copyToClipboard = async (text) => {
-    // Primary: Clipboard API
     if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(text);
       return true;
     }
-
-    // Fallback: hidden textarea + execCommand
+    // Fallback
     const ta = document.createElement('textarea');
     ta.value = text;
-    ta.setAttribute('readonly', '');
-    ta.style.position = 'absolute';
+    ta.style.position = 'fixed';
     ta.style.left = '-9999px';
     ta.style.top = '0';
     document.body.appendChild(ta);
+    ta.focus();
     ta.select();
-
     let ok = false;
     try {
       ok = document.execCommand('copy');
@@ -110,85 +152,20 @@ if (form) {
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    const data = new FormData(form);
+    const text = buildText(data);
 
-    const formData = new FormData(form);
-    const name = (formData.get('name') || '').toString().trim();
-    const contact = (formData.get('contact') || '').toString().trim();
-    const projectType = (formData.get('projectType') || '').toString().trim();
-    const details = (formData.get('details') || '').toString().trim();
+    const ok = await copyToClipboard(text);
+    if (ok) showToast('Текст скопирован в буфер обмена ✅');
+    else showToast('Не удалось скопировать текст — выделите и скопируйте вручную');
 
-    const text =
-`🧩 Заявка с сайта «Фабрика воспоминаний»
+    // Open manager chat
+    window.open('https://t.me/managerfabricav', '_blank', 'noopener');
 
-Имя: ${name}
-Контакт: ${contact}
-Тип проекта: ${projectType}
-
-Описание:
-${details}`.trim();
-
-    let copied = false;
-    try {
-      copied = await copyToClipboard(text);
-    } catch (e) {
-      copied = false;
-    }
-
-    if (copied) showToast('Текст скопирован в буфер обмена ✅');
-
-    // Open Telegram chat (new tab)
-    window.open(managerUrl, '_blank', 'noopener,noreferrer');
-
-    if (messageEl) {
-      if (copied) {
-        messageEl.innerHTML = `Текст заявки скопирован. Откройте чат и вставьте сообщение (Ctrl+V / Вставить) → Отправить. <a href="${managerUrl}" target="_blank" rel="noopener noreferrer">Открыть Telegram</a>`;
-      } else {
-        messageEl.innerHTML = `Открыл чат менеджера. Скопируйте текст ниже и отправьте в Telegram: <a href="${managerUrl}" target="_blank" rel="noopener noreferrer">Открыть Telegram</a>`;
-        // Create a selectable block with the text
-        const pre = document.createElement('pre');
-        pre.textContent = text;
-        pre.style.whiteSpace = 'pre-wrap';
-        pre.style.wordBreak = 'break-word';
-        pre.style.marginTop = '0.75rem';
-        pre.style.padding = '0.75rem';
-        pre.style.border = '1px solid #f0c8cc';
-        pre.style.borderRadius = '0.75rem';
-        pre.style.background = '#fff8f8';
-        messageEl.appendChild(pre);
-      }
+    if (message) {
+      message.textContent = 'Открыл чат менеджера. Вставьте текст (Ctrl+V) и отправьте.';
     }
 
     form.reset();
-  });
-}
-
-/**
- * Reveal-on-scroll
- */
-const revealNodes = document.querySelectorAll('.reveal');
-const onScrollReveal = () => {
-  const trigger = window.innerHeight * 0.92;
-  revealNodes.forEach((node) => {
-    const rect = node.getBoundingClientRect();
-    if (rect.top < trigger) node.classList.add('visible');
-  });
-};
-window.addEventListener('scroll', onScrollReveal, { passive: true });
-onScrollReveal();
-
-/**
- * Simple tilt effect
- */
-const tilt = document.querySelector('[data-tilt]');
-if (tilt) {
-  tilt.addEventListener('mousemove', (event) => {
-    const rect = tilt.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    tilt.style.transform = `rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg)`;
-  });
-
-  tilt.addEventListener('mouseleave', () => {
-    tilt.style.transform = 'rotateX(0deg) rotateY(0deg)';
   });
 }
