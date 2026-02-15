@@ -132,9 +132,40 @@ main{padding-bottom:64px}
 
 /* HERO */
 .hero{
-  padding:38px 0 34px; /* меньше разрыв под шапкой */
+  position:relative;
+  padding:38px 0 34px;
   border-bottom:1px solid var(--line);
+  overflow:hidden;
 }
+
+/* ФОТО НА ФОНЕ */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url("assets/photka1.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  z-index:0;
+}
+
+/* МЯГКИЙ ОВЕРЛЕЙ ДЛЯ ЧИТАЕМОСТИ */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(251,250,247,0.88);
+  z-index:1;
+}
+
+/* КОНТЕНТ ПОВЕРХ */
+.hero > .container{
+  position:relative;
+  z-index:2;
+}
+
+
 .hero-grid{
   display:grid;
   grid-template-columns: 1.2fr .8fr;
