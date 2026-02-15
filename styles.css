@@ -299,7 +299,7 @@ textarea{min-height:120px; resize:vertical}
 .hero .btn{border-color:rgba(15,15,16,.18); color:var(--text)}
 .hero .btn:hover{border-color:rgba(15,15,16,.30)}
 .hero .btn.btn-ghost{border-color:rgba(15,15,16,.12)}
-.accent-text{display:inline-block; white-space:nowrap; color:var(--accent);}
+.accent-text{display:inline-block; white-space:nowrap}
 
 .hero-photo-wrap{
   width:100%;
@@ -354,8 +354,11 @@ textarea{min-height:120px; resize:vertical}
   height:100%;
 }
 
+/* ссылка-обёртка для клика по фото */
+.catalog-media{display:block; text-decoration:none; color:inherit;}
+
 /* изображение в карточке: фикс высота, обрезка по краям, без наложений */
-.catalog-card > img{
+.catalog-card img{
   width:100%;
   height:180px;          /* на компе нормальный размер */
   object-fit:cover;
@@ -365,7 +368,7 @@ textarea{min-height:120px; resize:vertical}
 
 /* на мобиле чуть меньше */
 @media (max-width: 520px){
-  .catalog-card > img{
+  .catalog-card img{
     height:140px;
   }
 }
@@ -408,60 +411,4 @@ textarea{min-height:120px; resize:vertical}
   .site-header.brand-collapsed .nav-wrap{
     justify-content:space-between;
   }
-}
-
-
-/* Каталог — список сюжетов */
-.catalog-topics{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
-  padding:14px 16px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:rgba(255,255,255,.7);
-  backdrop-filter: blur(8px);
-}
-
-.catalog-topics__label{
-  margin:0;
-  color:var(--text);
-  font-weight:600;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  font-size:.78rem;
-  opacity:.75;
-  white-space:nowrap;
-  padding-top:3px;
-}
-
-.catalog-topics__list{
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.catalog-topics__list li{
-  border:1px solid var(--line);
-  background:var(--surface);
-  color:rgba(15,15,16,.82);
-  padding:8px 12px;
-  border-radius:999px;
-  line-height:1.1;
-  font-size:.92rem;
-  letter-spacing:.01em;
-}
-
-@media (max-width: 640px){
-  .catalog-topics{flex-direction:column; gap:10px;}
-  .catalog-topics__label{padding-top:0;}
-}
-
-
-@media (max-width: 520px){
-  .nav-links{gap:14px}
-  .nav-links a{font-size:11px; letter-spacing:.14em}
 }
