@@ -329,6 +329,61 @@ textarea{min-height:120px; resize:vertical}
   }
 }
 
+/* ====== CATALOG FIX: одинаковые превью, ничего не наезжает ====== */
+
+/* сетка уже есть — оставляем */
+.catalog-cards{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+  align-items:stretch;
+}
+
+@media (max-width: 520px){
+  .catalog-cards{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:12px;
+  }
+}
+
+/* сама карточка: не даём контенту вылезать */
+.catalog-card{
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+/* изображение в карточке: фикс высота, обрезка по краям, без наложений */
+.catalog-card > img{
+  width:100%;
+  height:180px;          /* на компе нормальный размер */
+  object-fit:cover;
+  display:block;
+  border-bottom:1px solid var(--line);
+}
+
+/* на мобиле чуть меньше */
+@media (max-width: 520px){
+  .catalog-card > img{
+    height:140px;
+  }
+}
+
+/* тело карточки пусть растягивается ровно */
+.catalog-body{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:14px 14px 16px;
+  flex:1;
+}
+
+/* кнопка заказа вниз */
+.catalog-body .btn{
+  margin-top:auto;
+}
+
 
 /* Mobile */
 @media (max-width: 900px){
