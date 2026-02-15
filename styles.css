@@ -412,3 +412,45 @@ textarea{min-height:120px; resize:vertical}
     justify-content:space-between;
   }
 }
+
+/* --- Hero rotating accent text (red) --- */
+.accent-text{
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* --- "А также" chips block --- */
+.also-block{
+  margin-top: 8px;
+}
+
+.also-title{
+  margin: 0 0 14px;
+  font-size: 14px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .75;
+}
+
+.also-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip{
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 999px;
+  font-size: 15px;
+  line-height: 1;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 520px){
+  .also-title{ margin-bottom: 10px; }
+  .chip{ font-size: 14px; padding: 9px 12px; }
+}
