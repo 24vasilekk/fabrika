@@ -712,7 +712,7 @@ textarea{min-height:120px; resize:vertical}
   height:auto;
   border-radius:22px;
   border:1px solid rgba(15,15,16,.10);
-  background:rgba(255,255,255,.6);
+  background: transparent;
 }
 @media (max-width: 860px){
   .about-hero .container{padding:40px 0;}
