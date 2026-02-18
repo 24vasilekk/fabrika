@@ -21,12 +21,14 @@
           <span class="brand-text">Фабрика воспоминаний</span>
         </a>
 
-        <nav>
+        <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteNav">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="site-nav" id="siteNav">
           <ul class="nav-links">
             <li><a class="active" href="index.html">Главная</a></li>
-            <li><a href="services.html">Процесс</a></li>
-            <li><a href="portfolio.html">Портфолио</a></li>
-            <li><a href="about.html">О студии</a></li>
+            <li><a href="services.html">Процесс</a></li><li><a href="about.html">О студии</a></li>
             <li><a href="contact.html">Контакты</a></li>
           </ul>
         </nav>
@@ -45,8 +47,7 @@
               арт-объектом, который хочется хранить всегда
             </h1>
             <p class="subtitle">
-              Премиальные мини-диорамы и мини-макеты по вашей истории: любовь, детство, семья,
-              родные места и дорогие сердцу детали.
+              Персональные 3D‑диорамы и мини‑макеты по вашей истории: любовь, детство, семья, родные места и важные детали.
             </p>
             <div class="hero-actions">
               <a class="btn" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">Заказать в Telegram</a>
@@ -64,16 +65,13 @@
       <section class="section container section-heading">
         <h2>Каталог идей</h2>
         <p>
-          Каждый проект ниже можно персонализировать под вашу дату, локацию, имена, цвета и сюжет.
-          Фото в карточках — заготовки, вы сможете заменить их своими реальными работами.
+          Идеи ниже — стартовые сценарии. Мы адаптируем композицию под вашу дату, локацию и детали (имена, надпись, цвета).
         </p>
       </section>
 
       <section id="catalog" class="section container catalog-cards">
         <article class="catalog-card reveal">
-          <a class="catalog-media" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">
-            <img src="assets/katalog1.png" alt="Наша первая встреча" loading="lazy" decoding="async" />
-          </a>
+          <img src="assets/catalog/card-1.svg" alt="Наша первая встреча"  loading="lazy" decoding="async" />
           <div class="catalog-body">
             <h3>Наша первая встреча</h3>
             <p>Остановка/кафе/университет + 2 фигурки и предмет-символ (кофе, билет, дата).</p>
@@ -82,9 +80,7 @@
         </article>
 
         <article class="catalog-card reveal">
-          <a class="catalog-media" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">
-            <img src="assets/katalog2.png" alt="Тот самый столик" loading="lazy" decoding="async" />
-          </a>
+          <img src="assets/catalog/card-2.svg" alt="Тот самый столик"  loading="lazy" decoding="async" />
           <div class="catalog-body">
             <h3>Тот самый столик</h3>
             <p>Мини-копия столика свидания с чеком/меню и памятной табличкой.</p>
@@ -93,9 +89,7 @@
         </article>
 
         <article class="catalog-card reveal">
-          <a class="catalog-media" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">
-            <img src="assets/katalog3.png" alt="Место первого поцелуя" loading="lazy" decoding="async" />
-          </a>
+          <img src="assets/catalog/card-3.svg" alt="Место первого поцелуя"  loading="lazy" decoding="async" />
           <div class="catalog-body">
             <h3>Место первого поцелуя</h3>
             <p>3D-точка на карте: рельеф, пин, координаты. Минимализм с сильной эмоцией.</p>
@@ -104,9 +98,7 @@
         </article>
 
         <article class="catalog-card reveal">
-          <a class="catalog-media" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">
-            <img src="assets/katalog4.png" alt="Предложение" loading="lazy" decoding="async" />
-          </a>
+          <img src="assets/catalog/card-4.svg" alt="Предложение"  loading="lazy" decoding="async" />
           <div class="catalog-body">
             <h3>Диорама «Предложение»</h3>
             <p>Сцена предложения с красивой скрытой нишей под кольцо.</p>
@@ -115,9 +107,7 @@
         </article>
 
         <article class="catalog-card reveal">
-          <a class="catalog-media" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">
-            <img src="assets/katalog5.png" alt="Наш первый дом" loading="lazy" decoding="async" />
-          </a>
+          <img src="assets/catalog/card-5.svg" alt="Наш первый дом"  loading="lazy" decoding="async" />
           <div class="catalog-body">
             <h3>Наш первый дом</h3>
             <p>Макет квартиры в разрезе с личными деталями: мебель, питомец, декор.</p>
@@ -126,9 +116,7 @@
         </article>
 
         <article class="catalog-card reveal">
-          <a class="catalog-media" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">
-            <img src="assets/katalog6.png" alt="Двор детства" loading="lazy" decoding="async" />
-          </a>
+          <img src="assets/catalog/card-6.svg" alt="Двор детства"  loading="lazy" decoding="async" />
           <div class="catalog-body">
             <h3>Двор, где мы росли</h3>
             <p>Качели, турник, лавочка и атмосфера ностальгии, которую невозможно забыть.</p>
@@ -137,9 +125,7 @@
         </article>
 
         <article class="catalog-card reveal">
-          <a class="catalog-media" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">
-            <img src="assets/katalog7.png" alt="Школьная парта" loading="lazy" decoding="async" />
-          </a>
+          <img src="assets/catalog/card-7.svg" alt="Школьная парта"  loading="lazy" decoding="async" />
           <div class="catalog-body">
             <h3>Школьная парта</h3>
             <p>Парта с выцарапанной надписью, датой выпуска и школьными акцентами.</p>
@@ -148,9 +134,7 @@
         </article>
 
         <article class="catalog-card reveal">
-          <a class="catalog-media" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">
-            <img src="assets/katalog8.png" alt="Питомец на ладони" loading="lazy" decoding="async" />
-          </a>
+          <img src="assets/catalog/card-8.svg" alt="Питомец на ладони"  loading="lazy" decoding="async" />
           <div class="catalog-body">
             <h3>Питомец на ладони</h3>
             <p>Мини-фигурка кошки или собаки в характерной позе с именной табличкой.</p>
@@ -160,11 +144,8 @@
       </section>
 
       <section class="section container">
-        <div class="also-block reveal">
-          <p class="also-title">А также:</p>
-          <div class="also-chips" aria-label="Дополнительные направления">
-            <span class="chip">Бабушкин дом</span><span class="chip">Кухня 90-х</span><span class="chip">Комната детства</span><span class="chip">Тамагочи / кассета / плеер</span><span class="chip">Гаражная романтика</span><span class="chip">Семейное древо в 3D</span><span class="chip">Первый автомобиль</span><span class="chip">Любимое место отдыха</span>
-          </div>
+        <div class="ticker" aria-label="Полный список направлений">
+          <span>Бабушкин дом</span><span>Кухня 90-х</span><span>Комната детства</span><span>Тамагочи / кассета / плеер</span><span>Гаражная романтика</span><span>Семейное древо в 3D</span><span>Первый автомобиль</span><span>Любимое место отдыха</span>
         </div>
       </section>
 

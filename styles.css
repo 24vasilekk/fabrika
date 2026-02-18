@@ -116,15 +116,15 @@ nav{min-width:0}
   justify-content:center;
   padding:10px 14px;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.28);
-  color:var(--header-text);
+  border:1px solid rgba(15,15,16,.18);
+  color:var(--text);
   text-decoration:none;
   font-size:11px;
   letter-spacing:.16em;
   text-transform:uppercase;
   background:transparent;
 }
-.btn:hover{border-color:rgba(255,255,255,.48)}
+.btn:hover{border-color:rgba(15,15,16,.32)}
 .btn:active{transform:translateY(1px)}
 .btn-sm{padding:9px 12px}
 
@@ -295,10 +295,26 @@ textarea{min-height:120px; resize:vertical}
 .hero-visual{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:18px}
 .hero-visual img{width:100%; max-width:180px; height:auto; display:block; margin:0 auto 12px}
 .glass{background:var(--surface)} /* legacy */
-.btn-ghost{border-color:transparent; background:transparent; color:var(--header-text)}
-.hero .btn{border-color:rgba(15,15,16,.18); color:var(--text)}
+.btn-ghost{border-color:rgba(15,15,16,.12); background:transparent; color:var(--text)}
+.hero .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(15,15,16,.18);
+  color:var(--text);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  background:transparent;
+}
+.btn:hover{border-color:rgba(15,15,16,.32)}
+.btn:active{transform:translateY(1px)}
+.btn-sm{padding:9px 12px}
 .hero .btn:hover{border-color:rgba(15,15,16,.30)}
-.hero .btn.btn-ghost{border-color:rgba(15,15,16,.12)}
+.hero .btn.btn-ghost{border-color:rgba(15,15,16,.12); background:transparent; color:var(--text)}
 .accent-text{display:inline-block; white-space:nowrap}
 
 .hero-photo-wrap{
@@ -354,11 +370,8 @@ textarea{min-height:120px; resize:vertical}
   height:100%;
 }
 
-/* ссылка-обёртка для клика по фото */
-.catalog-media{display:block; text-decoration:none; color:inherit;}
-
 /* изображение в карточке: фикс высота, обрезка по краям, без наложений */
-.catalog-card img{
+.catalog-card > img{
   width:100%;
   height:180px;          /* на компе нормальный размер */
   object-fit:cover;
@@ -368,7 +381,7 @@ textarea{min-height:120px; resize:vertical}
 
 /* на мобиле чуть меньше */
 @media (max-width: 520px){
-  .catalog-card img{
+  .catalog-card > img{
     height:140px;
   }
 }
@@ -384,8 +397,22 @@ textarea{min-height:120px; resize:vertical}
 
 /* кнопка заказа вниз */
 .catalog-body .btn{
-  margin-top:auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(15,15,16,.18);
+  color:var(--text);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  background:transparent;
 }
+.btn:hover{border-color:rgba(15,15,16,.32)}
+.btn:active{transform:translateY(1px)}
+.btn-sm{padding:9px 12px}
 
 
 /* Mobile */
@@ -400,57 +427,123 @@ textarea{min-height:120px; resize:vertical}
   .hero h1{font-size:38px}
   .nav-links{gap:12px}
   .nav-links a{font-size:10px; padding:10px 2px}
-  .btn{font-size:10px; padding:9px 10px}
+  .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(15,15,16,.18);
+  color:var(--text);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  background:transparent;
+}
+.btn:hover{border-color:rgba(15,15,16,.32)}
+.btn:active{transform:translateY(1px)}
+.btn-sm{padding:9px 12px}
 }
 
-/* Hide brand on scroll (mobile) while keeping menu visible */
+
+
+
+/* Header buttons should be white */
+.site-header .btn{
+  border-color: rgba(255,255,255,.28);
+  color: var(--header-text);
+}
+.site-header .btn:hover{border-color: rgba(255,255,255,.48);}
+
+/* Mobile menu */
+.nav-toggle{
+  display:none;
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.18);
+  background:transparent;
+  padding:10px;
+  cursor:pointer;
+}
+.nav-toggle span{
+  display:block;
+  height:1.5px;
+  background:rgba(255,255,255,.90);
+  border-radius:999px;
+}
+.nav-toggle span + span{margin-top:6px}
+
+.site-nav{min-width:0}
+
 @media (max-width: 520px){
-  .site-header.brand-collapsed .brand{
+  .nav-toggle{display:inline-flex; flex-direction:column; justify-content:center; gap:0}
+  .brand-text{display:none;}
+  .brand img{width:34px; height:34px;}
+  .nav-wrap{position:relative;}
+  .site-nav{
+    position:absolute;
+    left:0;
+    right:0;
+    top:calc(100% + 1px);
+    background:var(--header-bg);
+    border-bottom:1px solid rgba(255,255,255,.10);
+    padding:10px 0 14px;
     display:none;
   }
-  .site-header.brand-collapsed .nav-wrap{
-    justify-content:space-between;
+  .site-header.nav-open .site-nav{display:block;}
+  .nav-links{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    padding:0 4%;
+    overflow:visible;
+    white-space:normal;
   }
+  .nav-links a{
+    width:100%;
+    padding:12px 10px;
+    border-radius:12px;
+    border-bottom:none;
+    background:rgba(255,255,255,.04);
+  }
+  .nav-links a.active{background:rgba(255,255,255,.08);}
 }
 
-/* --- Hero rotating accent text (red) --- */
-.accent-text{
-  color: var(--accent);
-  font-weight: 600;
+/* Footer (fix alignment + spacing) */
+.site-footer{
+  border-top:1px solid var(--line);
+  padding:22px 0 34px;
+  margin-top:26px;
+}
+.footer-grid{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+.footer-grid strong{color:var(--text); font-size:13px}
+.footer-note{color:var(--muted); font-size:13px}
+@media (max-width:520px){
+  .footer-grid{flex-direction:column; align-items:flex-start;}
 }
 
-/* --- "А также" chips block --- */
-.also-block{
-  margin-top: 8px;
+/* About page split with photo */
+.about-split{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:18px;
+  align-items:center;
 }
-
-.also-title{
-  margin: 0 0 14px;
-  font-size: 14px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  opacity: .75;
+.about-media{
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--surface);
 }
-
-.also-chips{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.chip{
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 14px;
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: 999px;
-  font-size: 15px;
-  line-height: 1;
-  background: rgba(255,255,255,.55);
-  backdrop-filter: blur(6px);
-}
-
-@media (max-width: 520px){
-  .also-title{ margin-bottom: 10px; }
-  .chip{ font-size: 14px; padding: 9px 12px; }
+.about-media img{width:100%; height:100%; display:block; object-fit:cover}
+.about-copy .btn{margin-top:10px}
+@media (max-width:900px){
+  .about-split{grid-template-columns:1fr;}
 }

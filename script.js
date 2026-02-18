@@ -70,24 +70,6 @@ if (reveals.length) {
   reveals.forEach((item) => observer.observe(item));
 }
 
-// Mobile header: hide brand while scrolling (menu stays)
-const header = document.querySelector('.site-header');
-const updateHeader = () => {
-  if (!header) return;
-  const isMobile = window.matchMedia('(max-width: 520px)').matches;
-
-  // На мобильных сразу показываем компактную шапку,
-  // чтобы элементы не налезали друг на друга при первом открытии.
-  if (isMobile) {
-    header.classList.add('brand-collapsed');
-    return;
-  }
-
-  header.classList.remove('brand-collapsed');
-};
-window.addEventListener('scroll', updateHeader, { passive: true });
-window.addEventListener('resize', updateHeader);
-updateHeader();
 
 // Toast helper
 function showToast(text) {
@@ -170,5 +152,40 @@ if (form) {
     }
 
     form.reset();
+  });
+}
+
+// Mobile nav toggle
+const navToggle = document.querySelector('.nav-toggle');
+const siteHeader = document.querySelector('.site-header');
+const siteNav = document.getElementById('siteNav');
+
+if (navToggle && siteHeader) {
+  const closeNav = () => {
+    siteHeader.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = siteHeader.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close on link click (mobile)
+  if (siteNav) {
+    siteNav.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (a) closeNav();
+    });
+  }
+
+  // Close when resizing to desktop
+  window.addEventListener('resize', () => {
+    if (!window.matchMedia('(max-width: 520px)').matches) closeNav();
+  });
+
+  // Close on Escape
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
   });
 }

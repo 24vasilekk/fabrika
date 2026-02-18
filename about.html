@@ -17,12 +17,14 @@
           <img src="assets/logo.png" alt="Логотип Фабрики воспоминаний" />
           <span class="brand-text">Фабрика воспоминаний</span>
         </a>
-        <nav>
+        <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteNav">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="site-nav" id="siteNav">
           <ul class="nav-links">
             <li><a href="index.html">Главная</a></li>
-            <li><a href="services.html">Процесс</a></li>
-            <li><a href="portfolio.html">Портфолио</a></li>
-            <li><a class="active" href="about.html">О студии</a></li>
+            <li><a href="services.html">Процесс</a></li><li><a class="active" href="about.html">О студии</a></li>
             <li><a href="contact.html">Контакты</a></li>
           </ul>
         </nav>
@@ -38,6 +40,23 @@
           Фабрика воспоминаний объединяет 3D-дизайн, сторителлинг и персональную режиссуру деталей,
           чтобы ваши важные моменты получали материальную форму.
         </p>
+      </section>
+
+      <section class="section container about-split reveal">
+        <div class="about-media">
+          <img src="assets/ostudio.png" alt="Фото из личного архива" loading="lazy" decoding="async" />
+        </div>
+        <div class="about-copy">
+          <h2>Про тёплое внутри — и современное снаружи</h2>
+          <p>
+            Мы бережно собираем вашу историю из деталей: место, даты, предметы‑символы, жесты и настроение.
+            А дальше превращаем это в чистую современную форму — так, чтобы хотелось поставить на полку и возвращаться к этому снова.
+          </p>
+          <p class="muted">
+            Хотите так же? Напишите — мы предложим 2–3 направления под ваш сюжет.
+          </p>
+          <a class="btn" href="https://t.me/managerfabricav" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+        </div>
       </section>
 
       <section class="section container feature-grid">
