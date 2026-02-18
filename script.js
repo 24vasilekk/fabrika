@@ -70,6 +70,21 @@ if (reveals.length) {
   reveals.forEach((item) => observer.observe(item));
 }
 
+// Mobile header: hide brand while scrolling (menu stays)
+const header = document.querySelector('.site-header');
+const updateHeader = () => {
+  if (!header) return;
+  const isMobile = window.matchMedia('(max-width: 520px)').matches;
+  if (!isMobile) {
+    header.classList.remove('brand-collapsed');
+    return;
+  }
+  if (window.scrollY > 6) header.classList.add('brand-collapsed');
+  else header.classList.remove('brand-collapsed');
+};
+window.addEventListener('scroll', updateHeader, { passive: true });
+window.addEventListener('resize', updateHeader);
+updateHeader();
 
 // Toast helper
 function showToast(text) {
@@ -95,19 +110,16 @@ if (form) {
   const buildText = (data) => {
     const name = (data.get('name') || '').toString().trim();
     const contact = (data.get('contact') || '').toString().trim();
-    const projectType = (data.get('projectType') || '').toString().trim();
-    const details = (data.get('details') || '').toString().trim();
+    const messageText = (data.get('message') || '').toString().trim();
 
-    // Exactly like in form (labels + line breaks)
     return [
       '🧩 Заявка с сайта «Фабрика воспоминаний»',
       '',
       `Имя: ${name}`,
       `Контакт: ${contact}`,
-      `Тип проекта: ${projectType}`,
       '',
-      'Описание:',
-      details,
+      'Сообщение:',
+      messageText,
     ].join('\n');
   };
 
@@ -152,40 +164,5 @@ if (form) {
     }
 
     form.reset();
-  });
-}
-
-// Mobile nav toggle
-const navToggle = document.querySelector('.nav-toggle');
-const siteHeader = document.querySelector('.site-header');
-const siteNav = document.getElementById('siteNav');
-
-if (navToggle && siteHeader) {
-  const closeNav = () => {
-    siteHeader.classList.remove('nav-open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  };
-
-  navToggle.addEventListener('click', () => {
-    const isOpen = siteHeader.classList.toggle('nav-open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-
-  // Close on link click (mobile)
-  if (siteNav) {
-    siteNav.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (a) closeNav();
-    });
-  }
-
-  // Close when resizing to desktop
-  window.addEventListener('resize', () => {
-    if (!window.matchMedia('(max-width: 520px)').matches) closeNav();
-  });
-
-  // Close on Escape
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeNav();
   });
 }
