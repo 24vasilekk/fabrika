@@ -710,8 +710,6 @@ textarea{min-height:120px; resize:vertical}
 .about-hero-photo img{
   width:100%;
   height:auto;
-  border-radius:22px;
-  border:1px solid rgba(15,15,16,.10);
   background: transparent;
 }
 @media (max-width: 860px){
