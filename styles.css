@@ -130,6 +130,15 @@ nav{min-width:0}
 
 main{padding-bottom:64px}
 
+/* Page hero spacing (top space after header) */
+.page-hero{
+  padding:56px 0 18px;
+}
+@media (max-width:520px){
+  .page-hero{padding:44px 0 14px;}
+}
+
+
 /* HERO */
 .hero{
   position:relative;
@@ -315,7 +324,7 @@ textarea{min-height:120px; resize:vertical}
 .btn-sm{padding:9px 12px}
 .hero .btn:hover{border-color:rgba(15,15,16,.30)}
 .hero .btn.btn-ghost{border-color:rgba(15,15,16,.12); background:transparent; color:var(--text)}
-.accent-text{display:inline-block; white-space:nowrap}
+.accent-text{display:inline-block; white-space:nowrap; color:var(--accent)}
 
 .hero-photo-wrap{
   width:100%;
@@ -370,21 +379,22 @@ textarea{min-height:120px; resize:vertical}
   height:100%;
 }
 
-/* изображение в карточке: фикс высота, обрезка по краям, без наложений */
-.catalog-card > img{
+/* Catalog images can be wrapped in a link */
+.catalog-img-link{display:block; text-decoration:none; color:inherit}
+.catalog-card img{
   width:100%;
-  height:180px;          /* на компе нормальный размер */
+  height:180px;
   object-fit:cover;
   display:block;
   border-bottom:1px solid var(--line);
 }
-
-/* на мобиле чуть меньше */
 @media (max-width: 520px){
-  .catalog-card > img{
-    height:140px;
-  }
+  .catalog-card img{height:140px;}
 }
+
+/* Align "Заказать" buttons to the same baseline */
+.catalog-body .btn{margin-top:auto;}
+
 
 /* тело карточки пусть растягивается ровно */
 .catalog-body{
@@ -547,3 +557,73 @@ textarea{min-height:120px; resize:vertical}
 @media (max-width:900px){
   .about-split{grid-template-columns:1fr;}
 }
+
+
+/* "А ещё:" chips */
+.also-block{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.also-label{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding-top:6px;
+}
+.chips{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.chips li{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.6);
+  padding:10px 12px;
+  border-radius:999px;
+  font-size:12px;
+  color:rgba(15,15,16,.74);
+  line-height:1;
+}
+@media (max-width:520px){
+  .chips li{font-size:11px; padding:9px 11px;}
+}
+
+
+/* About hero with background photo like on main */
+.hero-about::before{
+  background-image:url("assets/ostudio.png");
+}
+
+
+/* Contact page: left info + right form, bottom full-width notes */
+.contact-two-col{
+  display:grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap:18px;
+  align-items:start;
+}
+.contact-left{
+  display:grid;
+  gap:14px;
+}
+.contact-notes{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.65);
+  border-radius:18px;
+  padding:18px;
+}
+.contact-notes h3{margin-top:0}
+.contact-notes ul{margin:10px 0 0 18px; color:var(--muted)}
+@media (max-width:900px){
+  .contact-two-col{grid-template-columns:1fr;}
+}
+
+
+/* Services spacing tweaks */
+.section.services-cta{padding:34px 0 32px;}
